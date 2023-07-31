@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Consulta de Despesas</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2" style="margin-top: 20px;">
+            <h:outputLabel for="dataProtocolo" value="Data do Protocolo:"/>
+            <h:inputText id="dataProtocolo" value="#{consultaDespesaBean.dataProtocolo}"/>
+
+            <h:outputLabel for="tipoDespesa" value="Tipo de Despesa:"/>
+            <h:inputText id="tipoDespesa" value="#{consultaDespesaBean.tipoDespesa}"/>
+
+            <h:outputLabel for="credor" value="Credor:"/>
+            <h:inputText id="credor" value="#{consultaDespesaBean.credor}"/>
+
+            <h:commandButton value="Consultar" action="#{consultaDespesaBean.consultarDespesas}" style="margin-top: 10px;"/>
+        </h:panelGrid>
+
+        <h:dataTable value="#{consultaDespesaBean.despesas}" var="despesa" rendered="#{not empty consultaDespesaBean.despesas}">
+            <h:column>
+                <f:facet name="header">Número de Protocolo</f:facet>
+                #{despesa.numeroProtocolo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Tipo de Despesa</f:facet>
+                #{despesa.tipoDespesa}
+            </h:column>
+            <!-- Outros campos da tabela de Despesa -->
+        </h:dataTable>
+
+        <h:outputText value="Nenhum resultado encontrado." rendered="#{empty consultaDespesaBean.despesas}"/>
+    </h:form>
+</h:body>
+</html>

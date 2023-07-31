@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+    <title>Entrada de Despesa</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2" style="margin-top: 20px;">
+            <h:outputLabel for="numProtocolo" value="Número de Protocolo:"/>
+            <h:inputText id="numProtocolo" value="#{despesaBean.despesa.numeroProtocolo}" required="true"/>
+
+            <h:outputLabel for="tipoDespesa" value="Tipo de Despesa:"/>
+            <h:inputText id="tipoDespesa" value="#{despesaBean.despesa.tipoDespesa}" required="true"/>
+
+            <h:outputLabel for="dataProtocolo" value="Data do Protocolo:"/>
+            <rich:calendar id="dataProtocolo" value="#{despesaBean.despesa.dataProtocolo}" datePattern="dd/MM/yyyy"
+                           required="true"/>
+
+            <!-- Outros campos de entrada para Despesa -->
+
+            <h:commandButton value="Salvar" action="#{despesaBean.salvarDespesa}" style="margin-top: 10px;"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
